@@ -7,9 +7,12 @@ class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     text = models.TextField()
     is_pub = models.BooleanField('is published?', default=False) # 공개 여부
-    first_pub_at = models.DateTimeField('first published time', null=True) # 최초로 공개된 시간
-    pub_at = models.DateTimeField('last published time', null=True) # 공개된 시간
-    edited_at = models.DateTimeField(null=True) # 업데이트된 시간
+    first_pub_at = models.DateTimeField('first published time', null=True, blank=True) # 최초로 공개된 시간
+    pub_at = models.DateTimeField('last published time', null=True, blank=True) # 공개된 시간
+    edited_at = models.DateTimeField(null=True, blank=True) # 업데이트된 시간
+
+    def __str__(self):
+        return f'{self.id}. {self.title}'
 
     def save(self, *args, **kwargs):
         # 첫 공개는 자동으로 기록을 남긴다.
