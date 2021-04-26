@@ -1,6 +1,8 @@
+{% load markdown_extras %}
+
 {% if post.title and post.text %}
     <h1>{{ post.title }}</h1>
-    <p>{{ post.text }}</p>
+    <p>{{ post.text | markdown | safe }}</p>
 {% else %}
     <p>Something wrong...</p>
 {% endif %}
