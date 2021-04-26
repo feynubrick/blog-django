@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpRequest
+from django.template import loader
 
 from .models import Post
 
@@ -7,15 +8,18 @@ def index(request: HttpRequest):
     return HttpResponse('OK')
 
 def post_list(request: HttpRequest):
-    post_queryset = Post.objects.order_by('id')
-    titles = [str(post) for post in post_queryset]
-    title_list_text = ','.join(titles)
-    return HttpResponse(title_list_text)
+    posts = Post.objects.order_by('id')
+    template = loader.get_template('blog/posts.html')
+    context = {
+        'posts': posts
+    }
+    return HttpResponse(template.render(context, request))
 
 def post_detail(request: HttpRequest, post_id: int):
     try:
         post = Post.objects.get(id=post_id)
     except Post.DoesNotExist:
         return HttpResponse('Post does not exist!', status=404)
-    
-    return HttpResponse(str(post))
+    template = loader.get_template('blog/post.html')
+    context = { 'post': post }
+    return HttpResponse(template.render(context, request))
