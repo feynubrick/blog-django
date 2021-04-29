@@ -1,9 +1,10 @@
 from django.urls import path
 
-from .views import index, post_list, post_detail
+from .views import home, about, post_list, post_detail
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('posts', post_list, name='post_list'),
-    path('posts/<int:post_id>', post_detail, name='post_detail'),
+    path('', home, name='blog_home'),
+    path('about', about, name='blog_about'),
+    path('posts', post_list, name='blog_posts'),
+    path('posts/<int:post_id>', post_detail, name='blog_post'),
 ]

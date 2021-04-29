@@ -4,10 +4,17 @@ from django.template import loader
 from .models import Post
 
 # Create your views here.
-def index(request: HttpRequest):
-    return HttpResponse('OK')
+def home(request: HttpRequest) -> HttpResponse:
+    template = loader.get_template('blog/home.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
 
-def post_list(request: HttpRequest):
+def about(request: HttpRequest) -> HttpResponse:
+    template = loader.get_template('blog/about.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def post_list(request: HttpRequest) -> HttpResponse:
     posts = Post.objects.order_by('id')
     template = loader.get_template('blog/posts.html')
     context = {
@@ -15,7 +22,7 @@ def post_list(request: HttpRequest):
     }
     return HttpResponse(template.render(context, request))
 
-def post_detail(request: HttpRequest, post_id: int):
+def post_detail(request: HttpRequest, post_id: int) -> HttpResponse:
     try:
         post = Post.objects.get(id=post_id)
     except Post.DoesNotExist:
