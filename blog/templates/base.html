@@ -1,6 +1,21 @@
-<header>
-  <a href="{% url 'blog_home' %}">Home</a> | <a href="{% url 'blog_posts' %}">Posts</a> | <a href="{% url 'blog_about' %}">About</a>
-</header>
+{% load static %}
 
-{% block content %}
-{% endblock content %}
+<html>
+  <head>
+    <title>Feynubrick의 블로그</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="{% url 'blog_home' %}">Home</a>
+      </h1>
+      <a href="{% url 'blog_posts' %}">Posts</a> | <a href="{% url 'blog_about' %}">About</a>
+    </header>
+    <div>
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </body>
+</html>
+
