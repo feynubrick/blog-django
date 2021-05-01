@@ -16,10 +16,12 @@ Python으로 local 환경에서 직접 실행하려면 다음 준비물이 필�
 
 ### Python pacakage 설치
 다음 명령어를 사용해 필요한 Python pacakage를 설치합니다.
+
 `$ python3 -m pip install -r requirements.txt`
 
 ### 실행
 프로젝트 폴더의 최상단에서 다음 명령어를 실행합니다. (아직 호스팅 단계는 아니기 때문에 다음 명령어를 사용합니다)
+
 `$ python3 manage.py runserver`
 
 그럼 이제 웹사이트를 `localhost:8000`에서 접근가능할 수 있습니다.
@@ -29,8 +31,10 @@ Docker를 사용하신다면 포함된 `Dockerfile`과 `docker-compose.yml` 파�
 
 ### 이미지 빌드
 단, `docker-compose.yml`에 이미지 이름이 `django-blog`로 명시되어 있으므로, 이미지 이름은 이대로 해주시면 됩니다.
+
 `$ docker build -t django-blog -f Dockerfile .`
 
 ### docker-compose를 사용해 실행
 다음 명령어를 사용해 실행하실 수 있습니다.
+
 `$ docker-compose up`
