@@ -1,0 +1,8 @@
+services:
+    web:
+        image: django-blog
+        volumes:
+            - ./blog:/app/blog
+            - ./mysite:/app/mysite
+        ports: 
+            - "8000:8000"
