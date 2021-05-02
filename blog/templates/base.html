@@ -2,21 +2,43 @@
 
 <!doctype html>
 <html lang="ko">
-  <head>
-    <title>Feynubrick의 블로그</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  </head>
-  <body>
-    <header>
-      <h1>
-        <a href="{% url 'blog_home' %}">Home</a>
-      </h1>
-      <a href="{% url 'blog_posts' %}">Posts</a> | <a href="{% url 'blog_about' %}">About</a>
-    </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feynubrick의 블로그</title>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div id="layout" class="pure-g">
+  <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+      <h1 class="brand-title">feynubrick의 블로그</h1>
+      <h1 class="brand-tagline">Creating a blog layout using Pure</h1>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="{% url 'blog_home' %}" class="pure-button">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'blog_posts' %}" class="pure-button">Posts</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'blog_about' %}" class="pure-button">About</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="content pure-u-1 pure-u-md-3-4">
     <div>
       {% block content %}
       {% endblock content %}
     </div>
-  </body>
+  </div>
+</div>
+</body>
 </html>
 
